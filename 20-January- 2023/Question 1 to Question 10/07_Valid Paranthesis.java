@@ -27,4 +27,28 @@ class Solution {
     }
 }
 
-//Using array
+//Using array(Beats 100%)
+
+class Solution {
+    public boolean isValid(String s) {
+        int n=s.length();
+        int arr[]=new int[n];
+        int index=0;
+        if(n%2!=0){
+            return false;
+        }
+
+        for(int i=0;i<s.length();i++){
+            switch(s.charAt(i)){
+                case '[': arr[index]='['; index++; break;
+                case '(': arr[index]='('; index++;   break;
+                case '{': arr[index]='{'; index++;  break;
+                case ']': index--; if(index<0 || arr[index]!='[')  return false ;break;
+                case ')': index--; if(index<0 || arr[index]!='(')  return false ;break;
+                case '}': index--; if(index<0 || arr[index]!='{') return false; break;
+            }
+        }
+        if(index!=0) return false;
+        return true;
+    }
+}
