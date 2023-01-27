@@ -25,3 +25,29 @@ class Solution
     }
     
 }
+
+
+// leetcode using stack
+
+class StockSpanner {
+    Stack<int[]> st;
+    public StockSpanner() {
+        st=new Stack<>();
+    }
+    
+    public int next(int price) {
+        int day=1;
+        while(!st.isEmpty() && price>=st.peek()[0]){
+            day+=st.peek()[1];
+            st.pop();
+        }
+        st.push(new int[]{price,day});
+        return day;
+    }
+}
+
+/**
+ * Your StockSpanner object will be instantiated and called as such:
+ * StockSpanner obj = new StockSpanner();
+ * int param_1 = obj.next(price);
+ */
