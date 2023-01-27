@@ -51,3 +51,34 @@ class StockSpanner {
  * StockSpanner obj = new StockSpanner();
  * int param_1 = obj.next(price);
  */
+
+
+
+// leetcode using arraylist
+
+class StockSpanner {
+    ArrayList<Integer> list;
+    int i;
+    public StockSpanner() {
+        list=new ArrayList<>();
+        i=0;
+    }
+    
+    public int next(int price) {
+        list.add(i,price);
+        int j=i;int day=0;
+
+        while(list.get(j)<=price){
+            if(j==0){
+                day++;
+                break;
+            }
+            else{
+                day++;
+                j--;
+            }
+        }
+        i++;
+        return day;
+    }
+}
