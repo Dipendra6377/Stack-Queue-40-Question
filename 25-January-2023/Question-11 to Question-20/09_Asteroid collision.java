@@ -25,3 +25,22 @@ class Solution {
         return arr;
     }
 }
+
+
+//2nd approach
+
+class Solution {
+    public static int[] asteroidCollision(int N, int[] ast) {
+        // code here
+        int top=-1;
+        for(int x:ast){
+            boolean blast=true;
+            while(blast && x<0 && top>=0 &&ast[top]>0){
+                blast=ast[top]+x<0;
+                if(ast[top]+x<=0) top--;
+            }
+            if(blast) ast[++top]=x;
+        }
+        return Arrays.copyOf(ast,top+1);
+    }
+}
