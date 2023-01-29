@@ -20,3 +20,24 @@ class Solution {
         return res;
     }
 }
+
+
+//using iterative approach
+class Solution {
+    public String removeOuterParentheses(String s) {
+        int count=0;
+        int k=0;
+        String res="";
+        for(int i=0;i<s.length();i++){
+            char c=s.charAt(i);
+            if(c=='(') count++;
+            else count--;
+
+            if(count==0){
+                res+=s.substring(k+1,i);
+                k=i+1;
+            }
+        }
+        return res;
+    }
+}
