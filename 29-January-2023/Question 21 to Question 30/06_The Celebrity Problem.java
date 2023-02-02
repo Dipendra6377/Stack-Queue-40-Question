@@ -81,3 +81,35 @@ class Solution
         }
     }
 }
+
+// using array in O(N) time complexity
+
+
+
+//User function Template for Java
+
+
+class Solution
+{ 
+    //Function to find if there is a celebrity in the party or not.
+    int celebrity(int arr[][], int n)
+    {
+    	// code here 
+    	int celebrity=0;
+
+        for(int i=0;i<n;i++){
+            if(arr[celebrity][i]==1){
+                celebrity=i; // phle hm dekhenge ki kya celebrity --> i ko pehechanta h ==1
+                //to celebrity i ho gya kyuki usko jante h
+            }
+        }
+
+        for(int i=0;i<n;i++){
+            if(celebrity!=i && (arr[celebrity][i]==1 || arr[i][celebrity]==0)){
+                // phir dekhenge ki agr celebrity i ko pehenchata h 
+                return -1;
+            }
+        }
+        return celebrity;
+    }
+}
