@@ -28,3 +28,56 @@ class Solution
 
 
 // Using Time complexity O(N)
+class Solution
+{ 
+    //Function to find if there is a celebrity in the party or not.
+    int celebrity(int arr[][], int n)
+    {
+    	// code here 
+        Stack<Integer> st=new Stack<>();
+        
+        for(int i=0;i<n;i++){
+            st.push(i);
+        }
+        
+        while(st.size()>1){
+            int a=st.peek();
+            st.pop();
+            int b=st.peek();
+            st.pop();
+            
+            if(aknowsb(a,b,arr,n)){
+                st.push(b);
+            }
+            else{
+                st.push(a);
+            }
+        }
+        int celeb=st.peek();
+        
+        int whocelebknows=0;
+        int whoknowsceleb=0;
+        for(int i=0;i<n;i++){
+            
+            if(arr[celeb][i]!=0){
+                whocelebknows++;
+            }
+            if(arr[i][celeb]==1){
+                whoknowsceleb++;
+            }
+        }
+        
+        if(whocelebknows==0 && whoknowsceleb==n-1){
+            return celeb;
+        }
+        return -1;
+    }
+    boolean aknowsb(int a,int b,int[][] arr,int n){
+        if(arr[a][b]==1){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+}
