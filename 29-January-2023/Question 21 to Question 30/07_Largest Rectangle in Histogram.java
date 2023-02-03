@@ -53,4 +53,27 @@ class Solution {
     }
 }
 
-// Optimised approach
+// Optimised approach TC O(N) && SC O(N)
+
+class Solution {
+    public int largestRectangleArea(int[] heights) {
+        Stack<Integer> st=new Stack<>();
+        int n=heights.length;
+        int max=0;
+        for(int i=0;i<=n;i++){
+            while(!st.isEmpty() && (i==n || heights[st.peek()]>=heights[i])){
+                int h = heights[st.peek()];
+                st.pop();
+                int width=0;
+                if(st.isEmpty()) width=i;
+                else width=i-st.peek()-1;
+
+                max=Math.max(max,width*h);
+
+            }
+            st.push(i);
+            
+        }
+        return max;
+    }
+}
